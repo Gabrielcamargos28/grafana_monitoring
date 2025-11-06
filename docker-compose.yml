@@ -21,6 +21,11 @@ services:
     container_name: loki
     ports:
       - "3100:3100"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SERVER_ROOT_URL=${GRAFANA_ROOT_URL:-http://localhost:3000}
+      - GF_SERVER_SERVE_FROM_SUB_PATH=${GRAFANA_SUBPATH:-false}
     volumes:
       - ./loki/loki-config.yml:/etc/loki/loki-config.yml
       - loki-data:/loki
