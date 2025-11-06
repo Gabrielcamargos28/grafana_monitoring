@@ -32,7 +32,7 @@ services:
     container_name: promtail
     volumes:
       - ./loki/promtail-config.yml:/etc/promtail/promtail-config.yml
-      - C:/Users/gabrielcamargos/OneDrive/Documentos/backend-pluri/logs:/app/logs:ro
+      - - ${LOG_PATH}:/app/logs:ro
     command: -config.file=/etc/promtail/promtail-config.yml
     restart: unless-stopped
     depends_on:
